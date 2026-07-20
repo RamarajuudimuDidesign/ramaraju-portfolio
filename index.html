@@ -4,1507 +4,1104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ramaraju Udimudi — Futuristic UI/UX Portfolio</title>
+  <title>Ramaraju Udimudi — Product Designer & Front-End Designer</title>
+  <meta name="description"
+    content="Product Designer & Front-End Designer specializing in healthcare, enterprise and SaaS interfaces — UI/UX, design systems, and pixel-perfect front-end delivery.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <script src="./assets/JS/script.js"></script>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Syne:wght@400;500;700;800&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-
+  <script>
+    /* Apply saved theme immediately, before first paint, so it never
+       flashes the wrong theme and never appears to "reset". */
+    (function () {
+      try {
+        var saved = localStorage.getItem('ru-theme');
+        var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
 </head>
 
 <body>
 
-  <!-- Cursor -->
+  <!-- SVG defs for ring gradient -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#8b5cf6" />
+        <stop offset="52%" stop-color="#3b82f6" />
+        <stop offset="100%" stop-color="#22d3ee" />
+      </linearGradient>
+    </defs>
+  </svg>
 
-  <div class="cursor"></div>
-  <div class="cursor-ring"></div>
-
-  <!-- NAV -->
-
-  <nav>
-    <div class="logo">RA<span>MARAJU</span></div>
-
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
+  <div id="preloader">
+    <div class="pre-mark"><span>R</span><span>A</span><span>M</span><span>.</span></div>
+    <div class="pre-bar">
+      <div class="pre-bar-fill"></div>
     </div>
-
-    <button class="nav-btn">Hire Me</button>
-  </nav>
-
-  <!-- HERO -->
-
-  <section class="hero">
-
-    <div class="hero-content">
-
-      <div class="hero-left reveal">
-
-        <div class="badge">
-          <div class="badge-dot"></div>
-          Available For New Opportunities
-        </div>
-
-        <h1>
-          Ramaraju <br>
-          <span>Udimudi</span>
-        </h1>
-
-        <p>
-          Futuristic UI/UX Designer & Front-End Designer crafting immersive digital experiences, premium interfaces,
-          scalable design systems, and modern enterprise products with a design + development mindset.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#projects" class="btn-primary">View Projects</a>
-          <a href="#contact" class="btn-secondary">Let's Talk</a>
-        </div>
-
-      </div>
-
-      <div class="hero-right reveal">
-
-        <div class="stats-grid">
-
-          <div class="glass-card stat-card floating">
-            <h3>3+</h3>
-            <p>Years Experience</p>
-          </div>
-
-          <div class="glass-card stat-card floating" style="animation-delay:.5s">
-            <h3>5+</h3>
-            <p>Major Products</p>
-          </div>
-
-          <div class="glass-card stat-card floating" style="animation-delay:1s">
-            <h3>UI</h3>
-            <p>Design Systems</p>
-          </div>
-
-          <div class="glass-card stat-card floating" style="animation-delay:1.5s">
-            <h3>UX</h3>
-            <p>Enterprise Experience</p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- ABOUT -->
-
-  <section id="about">
-
-    <div class="section-header reveal">
-      <div class="section-tag">ABOUT</div>
-
-      <h2 class="section-title">
-        Designing Experiences <br>
-        That Feel Alive.
-      </h2>
-
-      <p class="section-sub">
-        I specialize in building premium interfaces for healthcare platforms, enterprise products, SaaS applications,
-        and responsive web systems. I combine modern UI aesthetics with real-world usability and front-end
-        implementation expertise.
-      </p>
-    </div>
-
-    <div class="about-grid">
-
-      <div class="glass-card about-card reveal">
-        <h3>Creative Journey</h3>
-
-        <p>
-          From wireframes to fully responsive interfaces, I focus on creating intuitive and scalable experiences that
-          balance aesthetics, usability, and business goals.
-        </p>
-      </div>
-
-      <div class="glass-card about-card reveal">
-        <h3>Design + Development</h3>
-
-        <p>
-          I bridge the gap between designers and developers using Figma, HTML5, CSS3, Bootstrap, Angular, and modern
-          component systems for pixel-perfect implementation.
-        </p>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- PROJECTS -->
-
-
-  <section id="projects">
-
-    <div class="section-header reveal">
-      <div class="section-tag">FEATURED PROJECTS</div>
-
-      <h2 class="section-title">
-        Premium Digital <br>
-        Product Experiences
-      </h2>
-    </div>
-
-    <div class="projects-grid">
-
-      <div class="glass-card project-card reveal">
-        <div class="project-preview">
-          <img src="assets/img/dicom.jpg" alt="" width="100%">
-        </div>
-
-        <div class="project-category">Healthcare Web Platform</div>
-
-        <h3 class="project-title">DICOM</h3>
-
-        <p class="project-desc">
-          Responsive healthcare web application with modern UI systems, reusable components, and scalable design
-          architecture.
-        </p>
-
-        <div class="tags">
-          <span class="tag">HTML5</span>
-          <span class="tag">CSS3</span>
-          <span class="tag">Bootstrap</span>
-          <span class="tag">Figma</span>
-        </div>
-      </div>
-
-      <div class="glass-card project-card reveal">
-        <div class="project-preview">
-          <img src="assets/img/hims.jpg" alt="himsimg" width="100%">
-        </div>
-
-
-        <div class="project-category">Enterprise Healthcare</div>
-
-        <h3 class="project-title">HIMS</h3>
-
-        <p class="project-desc">
-          Hospital Information Management System designed for patient workflows, dashboards, billing, appointments, and
-          enterprise usability.
-        </p>
-
-        <div class="tags">
-          <span class="tag">Dashboard UI</span>
-          <span class="tag">Healthcare UX</span>
-          <span class="tag">Enterprise</span>
-        </div>
-      </div>
-
-      <div class="glass-card project-card reveal">
-        <div class="project-preview"></div>
-
-        <div class="project-category">Mobile Application</div>
-
-        <h3 class="project-title">Intalk</h3>
-
-        <p class="project-desc">
-          End-to-end mobile UX design including wireframes, user flows, interactive prototypes, and pixel-perfect
-          implementation support.
-        </p>
-
-        <div class="tags">
-          <span class="tag">Figma</span>
-          <span class="tag">UX Flow</span>
-          <span class="tag">Prototype</span>
-        </div>
-      </div>
-
-      <div class="glass-card project-card reveal">
-        <div class="project-preview">
-          <img src="assets/img/fantana.jpg" alt="fontana" width="100%">
-        </div>
-
-        <div class="project-category">Pharmacy Mobile App</div>
-
-        <h3 class="project-title">Fontana Pharmacy</h3>
-
-        <p class="project-desc">
-          Modern healthcare-focused mobile experience with intuitive navigation, customer-centric interactions, and
-          accessibility-first UX.
-        </p>
-
-        <div class="tags">
-          <span class="tag">Healthcare</span>
-          <span class="tag">Mobile UI</span>
-          <span class="tag">Figma</span>
-        </div>
-      </div>
-
-      <div class="glass-card project-card reveal">
-        <div class="project-preview">
-          <img src="assets/img/mrrch.jpg" alt="mrrchimg" width="100%">
-        </div>
-
-        <div class="project-category">Angular Ecosystem</div>
-
-        <h3 class="project-title">MRRCH</h3>
-
-        <p class="project-desc">
-          Responsive Angular application designed using PrimeNG and PrimeFlex with modular architecture and scalable UI
-          patterns.
-        </p>
-
-        <div class="tags">
-          <span class="tag">Angular</span>
-          <span class="tag">PrimeNG</span>
-          <span class="tag">Responsive UI</span>
-        </div>
-      </div>
-
-
-      <div class="glass-card project-card reveal">
-        <div class="project-preview">
-          <img src="assets/img/taskflow1.jpg" alt="taskflow1" width="100%">
-        </div>
-
-        <div class="project-category">Taskflow</div>
-
-        <h3 class="project-title">Saas_landing_page</h3>
-
-        <p class="project-desc">
-          TaskFlow is an all-in-one workspace for task management and team collaboration. It simplifies workflows,
-          improves communication, and keeps projects organized.
-        </p>
-
-        <div class="tags">
-          <span class="tag">Figma</span>
-          <span class="tag">Components</span>
-          <span class="tag">Auto Layout</span>
-          <a href="assets/img/saas_landing.pdf" target="_blank"> <button class="view-creatives-btn" !>
-              View pdf
-              <span class="btn-arrow">↗</span>
-            </button></a>
-        </div>
-      </div>
-      <div class="glass-card project-card reveal">
-        <div class="project-preview">
-          <img src="assets/img/doc1.jpg" alt="doc1" width="100%">
-        </div>
-
-        <div class="project-category">Taskflow</div>
-
-        <h3 class="project-title">DocNow is the best</h3>
-
-        <p class="project-desc">
-          Built a user-friendly landing page for a healthcare application with a modern and responsive UI.
-        </p>
-
-        <div class="tags">
-          <span class="tag">Figma</span>
-          <span class="tag">Components</span>
-          <span class="tag">Auto Layout</span>
-          <a href="assets/img/doc.pdf" target="_blank"> <button class="view-creatives-btn">
-              View pdf
-              <span class="btn-arrow">↗</span>
-            </button></a>
-        </div>
-      </div>
-      <!-- NEW GRAPHIC DESIGN CARD -->
-
-      <div class="glass-card project-card reveal">
-        <div class="project-preview">
-          <img src="assets/img/g1.png" alt="graphicdesign" width="100%">
-        </div>
-
-        <div class="project-category">Graphic Design</div>
-
-        <h3 class="project-title">Graphic Design</h3>
-
-        <p class="project-desc">
-          Creative branding, posters, social media creatives, marketing visuals, and futuristic digital graphics.
-        </p>
-
-        <div class="tags">
-          <span class="tag">Photoshop</span>
-          <span class="tag">Illustrator</span>
-          <span class="tag">Branding</span>
-          <span class="tag">Canva</span>
-        </div>
-
-        <button class="view-creatives-btn" id="openCreatives">
-          View Creatives
-          <span class="btn-arrow">↗</span>
-        </button>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- CREATIVES POPUP MODAL -->
-
-  <div class="creatives-overlay" id="creativesOverlay">
-    <div class="creatives-backdrop" id="creativesBackdrop"></div>
-
-    <div class="creatives-modal">
-
-      <div class="modal-header">
-        <div class="modal-header-left">
-          <div class="modal-tag">GRAPHIC DESIGN · BROCHURE CREATIVES</div>
-
-        </div>
-        <button class="modal-close" id="closeCreatives">✕</button>
-      </div>
-
-      <div class="creatives-grid">
-
-        <!-- CARD 5 — Event Banner -->
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/2.jpg" alt="" width="100%">
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-
-        <!-- CARD 6 — Annual Report -->
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/1.jpg" alt="" width="100%">
-              <div class="creative-deco">
-                <div class="creative-deco-circle"
-                  style="width:110px;height:110px;border:1px solid rgba(167,243,208,.2);top:-20px;right:20px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:60%;left:20%;top:44%;background:rgba(167,243,208,.15);">
-                </div>
-                <div class="creative-deco-line" style="width:40%;left:20%;top:56%;background:rgba(167,243,208,.1);">
-                </div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(167,243,208,.8);margin-bottom:6px;"> </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"></div>
-              </div>
-
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-
-        <!-- CARD 7 — Logo & Branding -->
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/3.jpg" alt="" width="100%">
-              <div class="creative-deco">
-                <div class="creative-deco-circle"
-                  style="width:80px;height:80px;border:2px solid rgba(251,191,36,.2);top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:55px;height:55px;background:radial-gradient(circle,rgba(251,191,36,.2),transparent);top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;">
-                </div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(253,230,138,.8);margin-bottom:6px;"> </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"></div>
-              </div>
-              <div class="creative-label">
-
-              </div>
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-
-        <!-- CARD 8 — Marketing Kit -->
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/4.jpg" alt="" width="100%">
-              <div class="creative-deco">
-                <div class="creative-deco-circle"
-                  style="width:130px;height:130px;border:1px solid rgba(196,181,253,.2);top:-20px;right:-20px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:50%;left:25%;top:46%;"></div>
-                <div class="creative-deco-line" style="width:30%;left:25%;top:58%;opacity:.5;"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(196,181,253,.8);margin-bottom:6px;">MARKETING
-                </div>
-                <div
-                  style="font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,#c4b5fd,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1;">
-                </div>
-              </div>
-              <div style="position:absolute;bottom:36px;left:20px;display:flex;gap:5px;">
-                <div
-                  style="width:28px;height:36px;border-radius:6px;background:rgba(196,181,253,.15);border:1px solid rgba(196,181,253,.2);">
-                </div>
-                <div
-                  style="width:28px;height:36px;border-radius:6px;background:rgba(196,181,253,.10);border:1px solid rgba(196,181,253,.15);">
-                </div>
-                <div
-                  style="width:28px;height:36px;border-radius:6px;background:rgba(196,181,253,.07);border:1px solid rgba(196,181,253,.1);">
-                </div>
-              </div>
-              <div class="creative-label">
-
-              </div>
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/5.jpg" alt="" width="100%">
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/6.jpg" alt="" width="100%">
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/7.png" alt="" width="100%">
-              <div class="creative-deco">
-                <div class="creative-deco-circle"
-                  style="width:130px;height:130px;border:1px solid rgba(196,181,253,.2);top:-20px;right:-20px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:50%;left:25%;top:46%;"></div>
-                <div class="creative-deco-line" style="width:30%;left:25%;top:58%;opacity:.5;"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(196,181,253,.8);margin-bottom:6px;">MARKETING
-                </div>
-                <div
-                  style="font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,#c4b5fd,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1;">
-                </div>
-              </div>
-              <div style="position:absolute;bottom:36px;left:20px;display:flex;gap:5px;">
-                <div
-                  style="width:28px;height:36px;border-radius:6px;background:rgba(196,181,253,.15);border:1px solid rgba(196,181,253,.2);">
-                </div>
-                <div
-                  style="width:28px;height:36px;border-radius:6px;background:rgba(196,181,253,.10);border:1px solid rgba(196,181,253,.15);">
-                </div>
-                <div
-                  style="width:28px;height:36px;border-radius:6px;background:rgba(196,181,253,.07);border:1px solid rgba(196,181,253,.1);">
-                </div>
-              </div>
-              <div class="creative-label">
-
-              </div>
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/8.png" alt="" width="100%">
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/9.jpg" alt="" width="100%">
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/10.jpg" alt="" width="100%">
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/11.jpg" alt="" width="100%">
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/12.jpg" alt="" width="100%">
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/13.jpg" alt="" width="100%">
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/14.jpg" alt="" width="100%">
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/15.jpg" alt="" width="100%">
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/16.jpg" alt="" width="100%">
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/17.jpg" alt="" width="100%">
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/18.jpg" alt="" width="100%">
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/19.jpg" alt="" width="100%">
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/15.jpg" alt="" width="100%">
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <img src="assets/img/21.jpg" alt="" width="100%">
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-        <!-- brochurs start -->
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <a href="assets/img/allinone.pdf" target="_blank"> <img src="assets/img/20.jpg" alt="" width="100%"></a>
-
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <a href="assets/img/cms-all.pdf" target="_blank"> <img src="assets/img/23.jpg" alt="cms-all"
-                  width="100%"></a>
-
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-
-        <div class="creative-card" style="display:none">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <a href="assets/img/hims-cms-emr-all.pdf" target="_blank"> <img src="assets/img/24.jpg" alt="hims-cms-emr-all
-                  width=" 100%"></a>
-
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <a href="assets/img/Edukares.pdf" target="_blank"> <img src="assets/img/25.jpg" alt="Edukares"
-                  width="100%"></a>
-
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-
-
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <a href="assets/img/suvarna-all.pdf" target="_blank"> <img src="assets/img/26.jpg" alt="suvarna-all"
-                  width="100%"></a>
-
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-
-        <!-- brochurs designs start -->
-
-        <div class="creative-card">
-          <div class="creative-preview">
-            <div class="creative-preview-inner">
-              <a href="assets/img/roboclick.pdf" target="_blank"> <img src="assets/img/R21.jpg" alt="suvarna-all"
-                  width="100%"></a>
-
-              <div class="creative-deco">
-                <div
-                  style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(239,68,68,.15),transparent 60%);">
-                </div>
-                <div class="creative-deco-circle"
-                  style="width:100px;height:100px;border:1px solid rgba(239,68,68,.25);top:10px;left:10px;border-radius:50%;">
-                </div>
-                <div class="creative-deco-line" style="width:65%;left:15%;top:48%;background:rgba(239,68,68,.2);"></div>
-              </div>
-              <div style="position:absolute;top:20px;left:20px;">
-                <div style="font-size:.55rem;letter-spacing:2px;color:rgba(252,165,165,.8);margin-bottom:6px;">
-                </div>
-                <div style="font-size:1.3rem;font-weight:800;color:white;line-height:1.1;"> </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="creative-info">
-            <div class="creative-info-title"></div>
-            <div class="creative-info-sub"></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
+    <div class="pre-pct">0%</div>
   </div>
 
+  <div class="noise"></div>
+  <div class="grid-overlay"></div>
+  <div class="spotlight"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+  <div id="scrollProgress"
+    style="position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(120deg,#8b5cf6,#3b82f6,#22d3ee);z-index:600;">
+  </div>
 
-  <!-- SKILLS -->
+  <!-- ============ HEADER ============ -->
+  <header>
+    <nav>
+      <a href="#top" class="logo"><span class="logo-mark">RU</span> Ramaraju</a>
 
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#work">Work</a>
+        <a href="#social-creatives">Social</a>
+        <a href="#brochures">Brochures</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="nav-right">
+        <button class="theme-switch" id="themeSwitch" aria-label="Toggle light and dark theme">
+          <span class="knob">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+            </svg>
+          </span>
+        </button>
+        <a href="#contact" class="btn btn-primary btn-sm magnetic">Hire Me</a>
+        <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+
+    <div id="mobileNav" style="display:none;">
+      <div class="mobile-nav-panel">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#work">Work</a><a
+          href="#social-creatives">Social</a><a href="#brochures">Brochures</a><a href="#experience">Experience</a><a
+          href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="hero-bg">
+      <div class="mesh mesh-1"></div>
+      <div class="mesh mesh-2"></div>
+      <div class="mesh mesh-3"></div>
+    </div>
+
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badges rv on">
+          <span class="pill"><span class="dot"></span> Available for Full-Time</span>
+          <span class="pill">3+ Years Experience</span>
+        </div>
+
+        <h1 class="rv on">
+          <small>Hi, I'm</small>
+          Ramaraju Udimudi
+        </h1>
+
+        <div class="type-role rv on" id="typeRoleWrap">
+          <span id="typeRole"></span>
+        </div>
+
+        <p class="lead rv on" style="margin-top:18px;">
+          I design and build premium digital products — from enterprise healthcare platforms to SaaS
+          dashboards — combining sharp UI craft with real front-end implementation.
+        </p>
+
+        <div class="hero-cta rv on">
+          <a href="#work" class="btn btn-primary magnetic">View Projects</a>
+          <a href="./assets/img/Ramaraju_Udimudi.pdf" download class="btn btn-ghost magnetic">Download Resume</a>
+          <a href="#contact" class="btn btn-ghost magnetic">Book a Call</a>
+        </div>
+
+        <div class="hero-social rv on">
+          <a href="https://github.com/" target="_blank" rel="noopener" class="social-btn" aria-label="Github">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path
+                d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" />
+            </svg>
+          </a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <rect x="3" y="3" width="18" height="18" rx="3" />
+              <path d="M8 11v5M8 8v.01M12 16v-3a2 2 0 1 1 4 0v3M12 13v3" />
+            </svg>
+          </a>
+          <a href="mailto:ramarajuudimudi0@gmail.com" class="social-btn" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="m4 7 8 6 8-6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-panel rv on rv-d2">
+        <div class="hero-stats glass">
+          <div class="hero-stat">
+            <div class="num" data-count="20" data-suffix="+">0</div>
+            <div class="lbl">Projects Delivered</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num" data-count="10" data-suffix="+">0</div>
+            <div class="lbl">Case Studies</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num" data-count="3" data-suffix="+">0</div>
+            <div class="lbl">Years Experience</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num" data-count="100" data-suffix="%">0</div>
+            <div class="lbl">Responsive Builds</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-cue"><span>SCROLL</span>
+      <div class="line"></div>
+    </div>
+  </section>
+
+  <svg class="divider" viewBox="0 0 1440 70" preserveAspectRatio="none">
+    <path d="M0,32 C240,70 480,0 720,20 C960,40 1200,66 1440,30 L1440,70 L0,70 Z"></path>
+  </svg>
+
+  <!-- ============ TRUST / STACK MARQUEE ============ -->
+  <section class="marquee-section tight">
+    <div class="marquee-label">Tools & technologies I design and build with</div>
+    <div class="marquee-track" id="marqueeTrack">
+      <span class="marquee-item">Figma</span>
+      <span class="marquee-item">FigJam</span>
+      <span class="marquee-item">Adobe XD</span>
+      <span class="marquee-item">Photoshop</span>
+      <span class="marquee-item">Illustrator</span>
+      <span class="marquee-item">HTML5</span>
+      <span class="marquee-item">CSS3</span>
+      <span class="marquee-item">Bootstrap</span>
+      <span class="marquee-item">Angular</span>
+      <span class="marquee-item">PrimeNG</span>
+      <span class="marquee-item">PrimeFlex</span>
+      <span class="marquee-item">Canva</span>
+      <!-- duplicate for seamless loop -->
+      <span class="marquee-item">Figma</span>
+      <span class="marquee-item">FigJam</span>
+      <span class="marquee-item">Adobe XD</span>
+      <span class="marquee-item">Photoshop</span>
+      <span class="marquee-item">Illustrator</span>
+      <span class="marquee-item">HTML5</span>
+      <span class="marquee-item">CSS3</span>
+      <span class="marquee-item">Bootstrap</span>
+      <span class="marquee-item">Angular</span>
+      <span class="marquee-item">PrimeNG</span>
+      <span class="marquee-item">PrimeFlex</span>
+      <span class="marquee-item">Canva</span>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about">
+    <div class="bg-mesh-soft"></div>
+    <div class="deco-shape deco-ring" style="width:280px;height:280px;top:8%;right:-80px;"></div>
+    <div class="deco-shape deco-glow" style="width:260px;height:260px;background:var(--purple);bottom:10%;left:-100px;">
+    </div>
+    <div class="wrap">
+      <div class="about-layout">
+        <div>
+          <div class="eyebrow rv">About</div>
+          <h2
+            style="font-family:var(--font-display);font-weight:600;font-size:clamp(2rem,3.6vw,2.8rem);line-height:1.1;letter-spacing:-.01em;"
+            class="rv">
+            Designing experiences <span class="grad-text">that feel alive.</span>
+          </h2>
+
+          <div class="about-copy" style="margin-top:26px;">
+            <p class="rv rv-d1">I specialize in building premium interfaces for <strong>healthcare platforms</strong>,
+              <strong>enterprise products</strong>, and <strong>SaaS applications</strong> — combining modern UI
+              aesthetics with real-world usability and front-end implementation.</p>
+            <p class="rv rv-d2">From wireframes to fully responsive builds, I bridge the gap between design and
+              development, working across Figma, HTML5/CSS3, Bootstrap, and Angular to ship pixel-perfect,
+              production-ready interfaces.</p>
+          </div>
+
+          <div class="focus-tags rv rv-d3">
+            <span class="focus-tag">Current focus — Healthcare UX systems</span>
+            <span class="focus-tag">Design + Development</span>
+            <span class="focus-tag">Accessibility-first</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="stat-block">
+            <div class="glass stat-card tilt rv"><span class="num" data-count="20" data-suffix="+">0</span><span
+                class="lbl">Projects Shipped</span></div>
+            <div class="glass stat-card tilt rv rv-d1"><span class="num" data-count="5" data-suffix="+">0</span><span
+                class="lbl">Major Products</span></div>
+            <div class="glass stat-card tilt rv rv-d2"><span class="num" data-count="3" data-suffix="+">0</span><span
+                class="lbl">Years Experience</span></div>
+            <div class="glass stat-card tilt rv rv-d3"><span class="num" data-count="100" data-suffix="%">0</span><span
+                class="lbl">Responsive</span></div>
+          </div>
+
+          <div class="about-cards">
+            <div class="glass about-card tilt rv">
+              <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.6">
+                  <path d="M12 2 2 7l10 5 10-5-10-5Z" />
+                  <path d="m2 17 10 5 10-5M2 12l10 5 10-5" />
+                </svg></div>
+              <h4>Creative Journey</h4>
+              <p>From wireframes to responsive interfaces — intuitive, scalable experiences that balance aesthetics with
+                business goals.</p>
+            </div>
+            <div class="glass about-card tilt rv rv-d1">
+              <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.6">
+                  <path d="m16 18 6-6-6-6M8 6l-6 6 6 6" />
+                </svg></div>
+              <h4>Design + Development</h4>
+              <p>Bridging designers and developers with Figma, HTML5, CSS3, Bootstrap, Angular, and modern component
+                systems.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
   <section id="skills">
+    <div class="bg-dots-fade"></div>
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">Skills &amp; Tools</div>
+        <h2>Design systems <span class="grad-text">& front-end stack.</span></h2>
+        <p>A working toolkit spanning research, interface design, prototyping, and production front-end code.</p>
+      </div>
 
-    <div class="section-header reveal">
-      <div class="section-tag">SKILLS & TOOLS</div>
+      <div class="skill-filters rv">
+        <button class="filter-chip active" data-skill-filter="all">All</button>
+        <button class="filter-chip" data-skill-filter="design">Design</button>
+        <button class="filter-chip" data-skill-filter="dev">Front-End</button>
+        <button class="filter-chip" data-skill-filter="research">UX & Research</button>
+        <button class="filter-chip" data-skill-filter="visual">Visual & AI</button>
+      </div>
 
-      <h2 class="section-title">
-        Design Systems <br>
-        & Front-End Stack
-      </h2>
+      <div class="skills-grid">
+
+        <div class="glass skill-card tilt rv" data-cat="design">
+          <div class="skill-top">
+            <span class="skill-cat">Design</span>
+            <div class="skill-ring"><svg>
+                <circle class="bg" cx="26" cy="26" r="21" />
+                <circle class="fg" data-pct="92" cx="26" cy="26" r="21" />
+              </svg><span class="pct">92%</span></div>
+          </div>
+          <h4>Figma</h4>
+          <p>UI systems, auto-layout components, and collaborative design libraries.</p>
+        </div>
+
+        <div class="glass skill-card tilt rv rv-d1" data-cat="research">
+          <div class="skill-top">
+            <span class="skill-cat">UX</span>
+            <div class="skill-ring"><svg>
+                <circle class="bg" cx="26" cy="26" r="21" />
+                <circle class="fg" data-pct="85" cx="26" cy="26" r="21" />
+              </svg><span class="pct">85%</span></div>
+          </div>
+          <h4>UI / UX Design</h4>
+          <p>Wireframing, user flows, and interactive prototypes from research to hi-fi.</p>
+        </div>
+
+        <div class="glass skill-card tilt rv rv-d2" data-cat="dev">
+          <div class="skill-top">
+            <span class="skill-cat">Front-End</span>
+            <div class="skill-ring"><svg>
+                <circle class="bg" cx="26" cy="26" r="21" />
+                <circle class="fg" data-pct="90" cx="26" cy="26" r="21" />
+              </svg><span class="pct">90%</span></div>
+          </div>
+          <h4>HTML5 &amp; CSS3</h4>
+          <p>Semantic, accessible markup with responsive, production-grade styling.</p>
+        </div>
+
+        <div class="glass skill-card tilt rv rv-d3" data-cat="dev">
+          <div class="skill-top">
+            <span class="skill-cat">Front-End</span>
+            <div class="skill-ring"><svg>
+                <circle class="bg" cx="26" cy="26" r="21" />
+                <circle class="fg" data-pct="82" cx="26" cy="26" r="21" />
+              </svg><span class="pct">82%</span></div>
+          </div>
+          <h4>Bootstrap</h4>
+          <p>Rapid, responsive layout systems for enterprise-grade interfaces.</p>
+        </div>
+
+        <div class="glass skill-card tilt rv" data-cat="dev">
+          <div class="skill-top">
+            <span class="skill-cat">Front-End</span>
+            <div class="skill-ring"><svg>
+                <circle class="bg" cx="26" cy="26" r="21" />
+                <circle class="fg" data-pct="78" cx="26" cy="26" r="21" />
+              </svg><span class="pct">78%</span></div>
+          </div>
+          <h4>Angular / PrimeNG</h4>
+          <p>PrimeNG + PrimeFlex component architecture for scalable applications.</p>
+        </div>
+
+        <div class="glass skill-card tilt rv rv-d1" data-cat="design">
+          <div class="skill-top">
+            <span class="skill-cat">Design</span>
+            <div class="skill-ring"><svg>
+                <circle class="bg" cx="26" cy="26" r="21" />
+                <circle class="fg" data-pct="80" cx="26" cy="26" r="21" />
+              </svg><span class="pct">80%</span></div>
+          </div>
+          <h4>Adobe XD</h4>
+          <p>Prototyping and interface design for cross-platform experiences.</p>
+        </div>
+
+        <div class="glass skill-card tilt rv rv-d2" data-cat="visual">
+          <div class="skill-top">
+            <span class="skill-cat">Visual</span>
+            <div class="skill-ring"><svg>
+                <circle class="bg" cx="26" cy="26" r="21" />
+                <circle class="fg" data-pct="88" cx="26" cy="26" r="21" />
+              </svg><span class="pct">88%</span></div>
+          </div>
+          <h4>Photoshop &amp; Illustrator</h4>
+          <p>Branding, marketing creatives, and polished visual design assets.</p>
+        </div>
+
+        <div class="glass skill-card tilt rv rv-d3" data-cat="visual">
+          <div class="skill-top">
+            <span class="skill-cat">AI Tools</span>
+            <div class="skill-ring"><svg>
+                <circle class="bg" cx="26" cy="26" r="21" />
+                <circle class="fg" data-pct="75" cx="26" cy="26" r="21" />
+              </svg><span class="pct">75%</span></div>
+          </div>
+          <h4>ChatGPT &amp; Cloud AI</h4>
+          <p>AI-assisted ideation, content, and workflow acceleration.</p>
+        </div>
+
+      </div>
     </div>
-
-    <div class="skills-wrap reveal">
-
-      <div class="skill-pill">Figma</div>
-      <div class="skill-pill">FigJam </div>
-      <div class="skill-pill">UI/UX</div>
-      <div class="skill-pill">HTML5</div>
-      <div class="skill-pill">CSS3</div>
-      <div class="skill-pill">Bootstrap</div>
-      <div class="skill-pill">Primeflex</div>
-      <div class="skill-pill">PrimeNG</div>
-      <div class="skill-pill">Photoshop</div>
-      <div class="skill-pill">Illustrator</div>
-      <div class="skill-pill">Canva</div>
-      <div class="skill-pill">XD</div>
-      <div class="skill-pill">ChatGPT </div>
-      <div class="skill-pill">Cloud AI</div>
-      <div class="skill-pill">Design Systems</div>
-      <div class="skill-pill">Responsive Design</div>
-
-    </div>
-
   </section>
 
-  <!-- EXPERIENCE -->
-  <!-- EXPERIENCE -->
-
-  <section id="experience">
-
-    <div class="section-header reveal">
-      <div class="section-tag">EXPERIENCE</div>
-
-      <h2 class="section-title">
-        Professional <br>
-        Timeline
-      </h2>
-    </div>
-
-    <div class="timeline">
-
-      <!-- EDUCATION -->
-
-      <div class="timeline-item reveal">
-        <div class="glass-card timeline-card">
-
-          <h3>Education</h3>
-
-          <span>Bachelor's Degree</span>
-
-          <p>
-            Ushodaya Degree College Chodavaram, Visakhapatnam, Andhra Pradesh, India. Graduated in 2022.
-          </p>
-
-        </div>
+  <!-- ============ PROJECTS ============ -->
+  <section id="work">
+    <div class="bg-grid-fade"></div>
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">Featured Work</div>
+        <h2>Premium digital <span class="grad-text">product experiences.</span></h2>
+        <p>Selected projects across healthcare, enterprise, and SaaS — each combining interface design with front-end
+          delivery.</p>
       </div>
 
-      <!-- INTERNSHIP -->
-
-      <div class="timeline-item reveal">
-        <div class="glass-card timeline-card">
-
-          <h3>Internship</h3>
-
-          <span>Front-End & UI/UX Design Intern · 2022 — 2023</span>
-
-          <p>
-            Worked on responsive web layouts, reusable UI systems, graphic design assets, and collaborative front-end
-            development to create visually engaging and user-friendly digital experiences for 9Artsmedia.
-          </p>
-
-        </div>
+      <div class="project-filters rv">
+        <button class="filter-chip active" data-proj-filter="all">All</button>
+        <button class="filter-chip" data-proj-filter="healthcare">Healthcare</button>
+        <button class="filter-chip" data-proj-filter="dashboard">Dashboard</button>
+        <button class="filter-chip" data-proj-filter="mobile">Mobile</button>
+        <button class="filter-chip" data-proj-filter="web">Web</button>
       </div>
 
-      <!-- SUVARNA -->
+      <div class="projects-list">
 
-      <div class="timeline-item reveal">
-
-        <div class="glass-card timeline-card experience-expand-card">
-
-          <!-- TOP -->
-
-          <div class="experience-top">
-
-            <div>
-
-              <h3>Suvarna Technosoft</h3>
-
-              <span>UI/UX Designer & Front-End Designer · 2023 — Present</span>
-
+        <div class="project-row glass tilt rv" data-tags="healthcare,web">
+          <div class="project-media">
+            <span class="project-idx">01</span>
+            <img src="assets/img/dicom.jpg" alt="DICOM healthcare platform interface" loading="lazy">
+          </div>
+          <div class="project-body">
+            <span class="project-cat">Healthcare Web Platform</span>
+            <h3>DICOM</h3>
+            <p>Responsive healthcare web application with modern UI systems, reusable components, and scalable design
+              architecture for imaging workflows.</p>
+            <div class="stat-badge-row">
+              <div class="stat-badge"><b>UI/UX</b><span>Role</span></div>
+              <div class="stat-badge"><b>Design System</b><span>Focus</span></div>
+              <div class="stat-badge"><b>Responsive</b><span>Delivery</span></div>
             </div>
-
-            <!-- MORE BUTTON -->
-
-
-
-          </div>
-
-          <!-- SHORT CONTENT -->
-
-          <p>
-            Leading UI/UX design and front-end experiences for healthcare systems, enterprise products, responsive
-            dashboards, and scalable Angular applications.
-          </p>
-          <div class="more">
-            <button class="expand-btn">
-              More
-              <div class="plus-icon"></div>
-            </button>
-          </div>
-          <!-- EXPAND CONTENT -->
-
-          <div class="expand-content">
-
-            <div class="expand-inner">
-
-              <div class="experience-grid">
-
-                <div class="experience-box">
-                  <h4>UI/UX Design</h4>
-
-                  <p>
-                    Created futuristic healthcare dashboards, enterprise interfaces, responsive systems,
-                    and scalable design experiences using Figma and modern design systems.
-                  </p>
-                </div>
-
-                <div class="experience-box">
-                  <h4>Front-End Development</h4>
-
-                  <p>
-                    Developed responsive layouts using HTML5, CSS3, Bootstrap, Angular, PrimeNG,
-                    and reusable component architecture.
-                  </p>
-                </div>
-
-                <div class="experience-box">
-                  <h4>Healthcare Products</h4>
-
-                  <p>
-                    Worked on HIMS, DICOM, Pharmacy, and enterprise healthcare applications
-                    with usability-focused UI patterns and workflow optimization.
-                  </p>
-                </div>
-
-                <div class="experience-box">
-                  <h4>Team Collaboration</h4>
-
-                  <p>
-                    Collaborated with developers, QA teams, business analysts, and stakeholders
-                    to deliver pixel-perfect production-ready interfaces.
-                  </p>
-                </div>
-
+            <div class="project-case-grid">
+              <div>
+                <h5>Challenge</h5>
+                <p>Complex imaging workflows needed a clear, consistent UI without slowing clinicians down.</p>
               </div>
-
+              <div>
+                <h5>Solution</h5>
+                <p>A reusable component library with predictable patterns across every screen.</p>
+              </div>
             </div>
-
+            <div class="project-tags">
+              <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Bootstrap</span><span
+                class="tag">Figma</span>
+            </div>
           </div>
+        </div>
 
+        <div class="project-row glass tilt rv" data-tags="healthcare,dashboard">
+          <div class="project-media">
+            <span class="project-idx">02</span>
+            <img src="assets/img/hims.jpg" alt="HIMS hospital management dashboard" loading="lazy">
+          </div>
+          <div class="project-body">
+            <span class="project-cat">Enterprise Healthcare</span>
+            <h3>HIMS</h3>
+            <p>Hospital Information Management System designed for patient workflows, dashboards, billing, and
+              appointments with enterprise-grade usability.</p>
+            <div class="stat-badge-row">
+              <div class="stat-badge"><b>Dashboard</b><span>Type</span></div>
+              <div class="stat-badge"><b>Enterprise</b><span>Scale</span></div>
+            </div>
+            <div class="project-case-grid">
+              <div>
+                <h5>Challenge</h5>
+                <p>Dense hospital data — patients, billing, appointments — needed digestible dashboards.</p>
+              </div>
+              <div>
+                <h5>Impact</h5>
+                <p>Streamlined workflows for admin and clinical staff across multiple modules.</p>
+              </div>
+            </div>
+            <div class="project-tags">
+              <span class="tag">Dashboard UI</span><span class="tag">Healthcare UX</span><span
+                class="tag">Enterprise</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row glass tilt rv" data-tags="web">
+          <div class="project-media"
+            style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(139,92,246,.15),rgba(34,211,238,.1));">
+            <span class="project-idx">03</span>
+               <img src="assets/img/intalk.png" alt="Intalk" loading="lazy">
+          </div>
+          <div class="project-body">
+            <span class="project-cat">Web Application</span>
+            <h3>Intalk</h3>
+            <p>End-to-end web UX design including wireframes, user flows, interactive prototypes, and pixel-perfect
+              implementation support.</p>
+            <div class="stat-badge-row">
+              <div class="stat-badge"><b>Web</b><span>Platform</span></div>
+              <div class="stat-badge"><b>End-to-End</b><span>Scope</span></div>
+            </div>
+            <div class="project-tags">
+              <span class="tag">Figma</span><span class="tag">UX Flow</span><span class="tag">Prototype</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row glass tilt rv" data-tags="healthcare,mobile">
+          <div class="project-media">
+            <span class="project-idx">04</span>
+            <img src="assets/img/fantana.jpg" alt="Fontana Pharmacy mobile app" loading="lazy">
+          </div>
+          <div class="project-body">
+            <span class="project-cat">Pharmacy Mobile App</span>
+            <h3>Fontana Pharmacy</h3>
+            <p>Modern healthcare-focused mobile experience with intuitive navigation, customer-centric interactions, and
+              accessibility-first UX.</p>
+            <div class="stat-badge-row">
+              <div class="stat-badge"><b>Mobile UI</b><span>Focus</span></div>
+              <div class="stat-badge"><b>A11y-First</b><span>Standard</span></div>
+            </div>
+            <div class="project-tags">
+              <span class="tag">Healthcare</span><span class="tag">Mobile UI</span><span class="tag">Figma</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row glass tilt rv" data-tags="web,dashboard">
+          <div class="project-media">
+            <span class="project-idx">05</span>
+            <img src="assets/img/mrrch.jpg" alt="MRRCH Angular application" loading="lazy">
+          </div>
+          <div class="project-body">
+            <span class="project-cat">Angular Ecosystem</span>
+            <h3>MRRCH</h3>
+            <p>Responsive Angular application designed using PrimeNG and PrimeFlex with modular architecture and
+              scalable UI patterns.</p>
+            <div class="stat-badge-row">
+              <div class="stat-badge"><b>Angular</b><span>Stack</span></div>
+              <div class="stat-badge"><b>Modular</b><span>Architecture</span></div>
+            </div>
+            <div class="project-tags">
+              <span class="tag">Angular</span><span class="tag">PrimeNG</span><span class="tag">Responsive UI</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row glass tilt rv" data-tags="web">
+          <div class="project-media">
+            <span class="project-idx">06</span>
+            <img src="assets/img/taskflow1.jpg" alt="TaskFlow SaaS landing page" loading="lazy">
+          </div>
+          <div class="project-body">
+            <span class="project-cat">SaaS Landing Page</span>
+            <h3>TaskFlow</h3>
+            <p>An all-in-one workspace for task management and team collaboration — simplifying workflows and keeping
+              projects organized.</p>
+            <div class="stat-badge-row">
+              <div class="stat-badge"><b>SaaS</b><span>Category</span></div>
+              <div class="stat-badge"><b>Landing</b><span>Type</span></div>
+            </div>
+            <div class="project-tags">
+              <span class="tag">Figma</span><span class="tag">Components</span><span class="tag">Auto Layout</span>
+            </div>
+            <div class="project-links">
+              <a href="assets/img/saas_landing.pdf" target="_blank" class="btn btn-ghost btn-sm">PDF ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row glass tilt rv" data-tags="healthcare,web">
+          <div class="project-media">
+            <span class="project-idx">07</span>
+            <img src="assets/img/doc1.jpg" alt="DocNow healthcare landing page" loading="lazy">
+          </div>
+          <div class="project-body">
+            <span class="project-cat">Healthcare Landing Page</span>
+            <h3>DocNow</h3>
+            <p>A user-friendly landing page for a healthcare application, built with a modern, responsive UI and clear
+              conversion flow.</p>
+            <div class="stat-badge-row">
+              <div class="stat-badge"><b>Landing</b><span>Type</span></div>
+              <div class="stat-badge"><b>Conversion</b><span>Focus</span></div>
+            </div>
+            <div class="project-tags">
+              <span class="tag">Figma</span><span class="tag">Components</span><span class="tag">Auto Layout</span>
+            </div>
+            <div class="project-links">
+              <a href="assets/img/doc.pdf" target="_blank" class="btn btn-ghost btn-sm">PDF ↗</a>
+            </div>
+          </div>
         </div>
 
       </div>
-
     </div>
-
   </section>
 
-  <!-- PHILOSOPHY -->
-
-  <section>
-
-    <div class="section-header reveal">
-      <div class="section-tag">DESIGN PHILOSOPHY</div>
-
-      <h2 class="section-title">
-        Human-Centered <br>
-        Product Thinking
-      </h2>
+  <!-- ============ SOCIAL MEDIA CREATIVES ============ -->
+  <section class="tight" id="social-creatives">
+    <div class="deco-shape deco-glow" style="width:320px;height:320px;background:var(--purple);top:-10%;left:-10%;">
     </div>
-
-    <div class="philosophy-grid">
-
-      <div class="glass-card philosophy-card reveal">
-        <h3>User First Thinking</h3>
-        <p>Every interaction is designed around clarity, usability, and meaningful user experiences.</p>
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">Graphic Design</div>
+        <h2>Social media <span class="grad-text">creatives.</span></h2>
+        <p>Posts, banners, and campaign visuals designed for social platforms.</p>
       </div>
 
-      <div class="glass-card philosophy-card reveal">
-        <h3>Design Systems</h3>
-        <p>Scalable systems and reusable components that create consistency across products.</p>
+      <div class="gallery-grid rv" id="creativesGrid">
+
+        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/1.jpg" alt="Social media creative 2" loading="lazy"></div>
+        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/2.jpg" alt="Social media creative 3" loading="lazy"></div>
+        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/3.jpg" alt="Social media creative 4" loading="lazy"></div>
+        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/4.jpg" alt="Social media creative 5" loading="lazy"></div>
+        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/5.jpg" alt="Social media creative 5" loading="lazy"></div>
+        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/6.jpg" alt="Social media creative 6" loading="lazy"></div>
+        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/7.png" alt="Social media creative 6" loading="lazy"></div>
+        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/8.png" alt="Social media creative 7" loading="lazy"></div>
+        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/9.jpg" alt="Social media creative 9" loading="lazy"></div>
+        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/10.jpg" alt="Social media creative 10" loading="lazy"></div>
+        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/11.jpg" alt="Social media creative 11" loading="lazy"></div>
+        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/12.jpg" alt="Social media creative 12" loading="lazy"></div>
+
+        <div class="gallery-item gallery-extra" data-lightbox="creatives"><img src="assets/img/13.jpg" alt="Social media creative 9" loading="lazy"></div>
+        <div class="gallery-item gallery-extra" data-lightbox="creatives"><img src="assets/img/14.jpg" alt="Social media creative 10" loading="lazy"></div>
+        <div class="gallery-item gallery-extra" data-lightbox="creatives"><img src="assets/img/15.jpg" alt="Social media creative 11" loading="lazy"></div>
+        <div class="gallery-item gallery-extra" data-lightbox="creatives"><img src="assets/img/16.jpg" alt="Social media creative 12" loading="lazy"></div>
+        <div class="gallery-item gallery-extra" data-lightbox="creatives"><img src="assets/img/17.jpg" alt="Social media creative 9" loading="lazy"></div>
+        <div class="gallery-item gallery-extra" data-lightbox="creatives"><img src="assets/img/18.jpg" alt="Social media creative 10" loading="lazy"></div>
+        <div class="gallery-item gallery-extra" data-lightbox="creatives"><img src="assets/img/19.jpg" alt="Social media creative 11" loading="lazy"></div>
+        <div class="gallery-item gallery-extra" data-lightbox="creatives"><img src="assets/img/21.jpg" alt="Social media creative 12" loading="lazy"></div>
+
       </div>
 
-      <div class="glass-card philosophy-card reveal">
-        <h3>Pixel Perfect UI</h3>
-        <p>Attention to alignment, spacing, typography, and visual hierarchy for premium interfaces.</p>
+      <div class="gallery-more-wrap rv">
+        <button class="btn btn-ghost magnetic" id="loadMoreCreatives" data-target="creativesGrid">
+          Load More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
       </div>
-
-      <div class="glass-card philosophy-card reveal">
-        <h3>Accessibility</h3>
-        <p>Inclusive experiences optimized for usability, responsiveness, and readability.</p>
-      </div>
-
-      <div class="glass-card philosophy-card reveal">
-        <h3>Clean UX</h3>
-        <p>Minimal interfaces with powerful functionality and frictionless navigation flows.</p>
-      </div>
-
-      <div class="glass-card philosophy-card reveal">
-        <h3>Design + Development</h3>
-        <p>Combining UI design with front-end implementation for seamless product delivery.</p>
-      </div>
-
     </div>
-
   </section>
 
-  <!-- CONTACT -->
+  <!-- ============ LIGHTBOX (click any creative to expand) ============ -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous design">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="lightbox-stage">
+      <img id="lightboxImg" src="" alt="">
+      <div class="lightbox-caption"><span id="lightboxCount"></span></div>
+    </div>
+    <button class="lightbox-nav next" id="lightboxNext" aria-label="Next design">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </div>
 
+  <!-- ============ BROCHURES ============ -->
+  <section class="tight" id="brochures">
+    <div class="deco-shape deco-glow" style="width:320px;height:320px;background:var(--cyan);top:-10%;right:-10%;">
+    </div>
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">Graphic Design</div>
+        <h2>Brochures <span class="grad-text">& print collateral.</span></h2>
+        <p>Marketing brochures and company profiles — click any piece to open the full PDF.</p>
+      </div>
+
+      <div class="gallery-grid rv">
+        <div class="gallery-item"><a href="assets/img/allinone.pdf" target="_blank"><img src="assets/img/20.jpg"
+              alt="All-in-one brochure"><span class="gallery-badge">View PDF</span></a></div>
+        <div class="gallery-item"><a href="assets/img/cms-all.pdf" target="_blank"><img src="assets/img/23.jpg"
+              alt="CMS brochure"><span class="gallery-badge">View PDF</span></a></div>
+        <div class="gallery-item"><a href="assets/img/Edukares.pdf" target="_blank"><img src="assets/img/25.jpg"
+              alt="Edukares brochure"><span class="gallery-badge">View PDF</span></a></div>
+        <div class="gallery-item"><a href="assets/img/suvarna-all.pdf" target="_blank"><img src="assets/img/26.jpg"
+              alt="Suvarna brochure"><span class="gallery-badge">View PDF</span></a></div>
+        <div class="gallery-item"><a href="assets/img/roboclick.pdf" target="_blank"><img src="assets/img/R21.jpg"
+              alt="Roboclick brochure"><span class="gallery-badge">View PDF</span></a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAVORITE TOOLS ============ -->
+  <section class="tight">
+    <div class="bg-dots-fade"></div>
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">Daily Workflow</div>
+        <h2>Tools I reach for <span class="grad-text">every day.</span></h2>
+        <p>The stack behind most of my design and front-end work, start to finish.</p>
+      </div>
+
+      <div class="tools-grid">
+        <div class="glass tool-card tilt rv"><span class="tico">Fi</span>
+          <div>
+            <h4>Figma</h4>
+            <p>Interface design, prototyping, component libraries.</p>
+          </div>
+        </div>
+        <div class="glass tool-card tilt rv rv-d1"><span class="tico">Fj</span>
+          <div>
+            <h4>FigJam</h4>
+            <p>Flows, journey mapping, and team brainstorming.</p>
+          </div>
+        </div>
+        <div class="glass tool-card tilt rv rv-d2"><span class="tico">Ps</span>
+          <div>
+            <h4>Photoshop</h4>
+            <p>Image editing and marketing creative production.</p>
+          </div>
+        </div>
+        <div class="glass tool-card tilt rv"><span class="tico">Ai</span>
+          <div>
+            <h4>Illustrator</h4>
+            <p>Branding, icon sets, and vector artwork.</p>
+          </div>
+        </div>
+        <div class="glass tool-card tilt rv rv-d1"><span class="tico">&lt;/&gt;</span>
+          <div>
+            <h4>HTML / CSS</h4>
+            <p>Semantic, responsive front-end implementation.</p>
+          </div>
+        </div>
+        <div class="glass tool-card tilt rv rv-d2"><span class="tico">Ng</span>
+          <div>
+            <h4>Angular + PrimeNG</h4>
+            <p>Component-driven enterprise application builds.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section id="process">
+    <div class="bg-mesh-soft"></div>
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">Design Process</div>
+        <h2>How I move <span class="grad-text">from problem to product.</span></h2>
+        <p>A structured, six-stage process I follow on every product engagement.</p>
+      </div>
+
+      <div class="process-track rv">
+        <div class="process-step">
+          <div class="process-num">01</div>
+          <h4>Discover</h4>
+          <p>Understand users, business goals, and constraints through research and stakeholder input.</p>
+          <div class="bar"></div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">02</div>
+          <h4>Define</h4>
+          <p>Frame the core problem, personas, and success metrics before any pixels are drawn.</p>
+          <div class="bar"></div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">03</div>
+          <h4>Ideate</h4>
+          <p>Explore flows and layouts through wireframes and rapid concept sketches.</p>
+          <div class="bar"></div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">04</div>
+          <h4>Prototype</h4>
+          <p>Build interactive, high-fidelity prototypes in Figma for validation.</p>
+          <div class="bar"></div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">05</div>
+          <h4>Test</h4>
+          <p>Validate with users and stakeholders, iterating on friction points.</p>
+          <div class="bar"></div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">06</div>
+          <h4>Deliver</h4>
+          <p>Hand off design systems and build pixel-perfect, responsive front-end.</p>
+          <div class="bar"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience">
+    <div class="bg-dots-fade"></div>
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">Experience</div>
+        <h2>Professional <span class="grad-text">timeline.</span></h2>
+      </div>
+
+      <div class="timeline">
+
+        <div class="tl-item rv">
+          <div class="tl-dot"></div>
+          <div class="glass tl-card">
+            <div class="tl-top">
+              <h3>Education</h3><span class="role">2018 — 2022</span>
+            </div>
+            <span class="role">Bachelor's Degree</span>
+            <p>Ushodaya Degree College, Chodavaram, Visakhapatnam, Andhra Pradesh, India. Graduated in 2022.</p>
+          </div>
+        </div>
+
+        <div class="tl-item rv">
+          <div class="tl-dot"></div>
+          <div class="glass tl-card">
+            <div class="tl-top">
+              <h3>9Artsmedia</h3><span class="role">2022 — 2023</span>
+            </div>
+            <span class="role">Front-End &amp; UI/UX Design Intern</span>
+            <p>Worked on responsive web layouts, reusable UI systems, graphic design assets, and collaborative front-end
+              development to create visually engaging, user-friendly digital experiences.</p>
+          </div>
+        </div>
+
+        <div class="tl-item rv">
+          <div class="tl-dot"></div>
+          <div class="glass tl-card">
+            <div class="tl-top">
+              <h3>Suvarna Technosoft</h3><span class="role">2023 — Present</span>
+            </div>
+            <span class="role">UI/UX Designer &amp; Front-End Designer</span>
+            <p>Leading UI/UX design and front-end experiences for healthcare systems, enterprise products, responsive
+              dashboards, and scalable Angular applications.</p>
+
+            <button class="tl-more">More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+
+            <div class="tl-expand">
+              <div class="tl-grid">
+                <div>
+                  <h5>UI/UX Design</h5>
+                  <p>Created healthcare dashboards, enterprise interfaces, and scalable design systems using Figma.</p>
+                </div>
+                <div>
+                  <h5>Front-End Development</h5>
+                  <p>Built responsive layouts with HTML5, CSS3, Bootstrap, Angular, PrimeNG, and reusable components.
+                  </p>
+                </div>
+                <div>
+                  <h5>Healthcare Products</h5>
+                  <p>Worked on HIMS, DICOM, Pharmacy, and enterprise healthcare apps with workflow-optimized UI.</p>
+                </div>
+                <div>
+                  <h5>Team Collaboration</h5>
+                  <p>Partnered with developers, QA, and stakeholders to deliver pixel-perfect, production-ready UI.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PHILOSOPHY ============ -->
+  <section class="tight">
+    <div class="bg-grid-fade"></div>
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">Design Philosophy</div>
+        <h2>Human-centered <span class="grad-text">product thinking.</span></h2>
+      </div>
+
+      <div class="phi-grid">
+        <div class="glass phi-card tilt rv">
+          <div class="n">01</div>
+          <h4>User First Thinking</h4>
+          <p>Every interaction is designed around clarity, usability, and meaningful outcomes.</p>
+        </div>
+        <div class="glass phi-card tilt rv rv-d1">
+          <div class="n">02</div>
+          <h4>Design Systems</h4>
+          <p>Scalable systems and reusable components that create consistency across products.</p>
+        </div>
+        <div class="glass phi-card tilt rv rv-d2">
+          <div class="n">03</div>
+          <h4>Pixel Perfect UI</h4>
+          <p>Attention to alignment, spacing, typography, and visual hierarchy.</p>
+        </div>
+        <div class="glass phi-card tilt rv">
+          <div class="n">04</div>
+          <h4>Accessibility</h4>
+          <p>Inclusive experiences optimized for usability, responsiveness, and readability.</p>
+        </div>
+        <div class="glass phi-card tilt rv rv-d1">
+          <div class="n">05</div>
+          <h4>Clean UX</h4>
+          <p>Minimal interfaces with powerful functionality and frictionless navigation.</p>
+        </div>
+        <div class="glass phi-card tilt rv rv-d2">
+          <div class="n">06</div>
+          <h4>Design + Development</h4>
+          <p>Combining UI design with front-end implementation for seamless delivery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RECOGNITION (ready for real content) ============ -->
+  <section class="tight">
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">Recognition</div>
+        <h2>Awards, certificates <span class="grad-text">& testimonials.</span></h2>
+        <p>This space is wired up and ready — drop in real certificates, client quotes, or awards as you collect them.
+        </p>
+      </div>
+
+      <div class="placeholder-strip rv">
+        <div class="glass placeholder-card">
+          <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <circle cx="12" cy="8" r="6" />
+              <path d="M8.2 13.5 7 22l5-3 5 3-1.2-8.5" />
+            </svg></div>
+          <h5>Award</h5>
+          <p>Add a recognition or award here.</p>
+        </div>
+        <div class="glass placeholder-card">
+          <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
+              <path d="M14 2v6h6M9 15l2 2 4-4" />
+            </svg></div>
+          <h5>Certificate</h5>
+          <p>Add a certification and issuer here.</p>
+        </div>
+        <div class="glass placeholder-card">
+          <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z" />
+            </svg></div>
+          <h5>Client Testimonial</h5>
+          <p>Add a quote from a client or teammate.</p>
+        </div>
+        <div class="glass placeholder-card">
+          <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path
+                d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" />
+            </svg></div>
+          <h5>Open Source</h5>
+          <p>Link a repo or contribution here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="tight">
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">FAQ</div>
+        <h2>Good to <span class="grad-text">know.</span></h2>
+      </div>
+
+      <div class="faq-list rv">
+        <div class="faq-item open">
+          <div class="faq-q">What kind of projects do you take on?<svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <path d="M12 5v14M5 12h14" />
+            </svg></div>
+          <div class="faq-a">
+            <p>Primarily UI/UX design and front-end builds for healthcare, enterprise, and SaaS products — from early
+              wireframes through to responsive, production-ready interfaces.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Do you handle both design and development?<svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <path d="M12 5v14M5 12h14" />
+            </svg></div>
+          <div class="faq-a">
+            <p>Yes — I design in Figma and can also implement the front-end in HTML5, CSS3, Bootstrap, or Angular, so
+              handoff friction is minimal.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Are you available for full-time roles?<svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <path d="M12 5v14M5 12h14" />
+            </svg></div>
+          <div class="faq-a">
+            <p>Yes, I'm currently open to full-time opportunities as well as select freelance and contract work.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What's the best way to reach you?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <path d="M12 5v14M5 12h14" />
+            </svg></div>
+          <div class="faq-a">
+            <p>Email is fastest — ramarajuudimudi0@gmail.com — or use the contact form below.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
   <section id="contact">
+    <div class="bg-mesh-soft"></div>
+    <div class="wrap">
+      <div class="contact-layout rv">
+        <div class="contact-left">
+          <div class="eyebrow">Contact</div>
+          <h2>Let's build something <span class="grad-text">exceptional.</span></h2>
+          <p>Looking for a UI/UX Designer or Front-End Designer who combines modern aesthetics with real implementation
+            experience? Let's talk.</p>
 
-    <div class="glass-card contact-card reveal">
+          <div class="contact-info">
+            <a href="mailto:ramarajuudimudi0@gmail.com"><span class="ic"><svg viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="1.6">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="m4 7 8 6 8-6" />
+                </svg></span> ramarajuudimudi0@gmail.com</a>
+            <a href="tel:+919010725501"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.6">
+                  <path
+                    d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.1 2.4Z" />
+                </svg></span> +91 90107 25501</a>
+            <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg></span> Andhra Pradesh, India</div>
+            <div><span class="ic"><span class="dot"
+                  style="width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80;"></span></span>
+              Available for full-time roles</div>
+          </div>
+        </div>
 
-      <h2 class="contact-title">
-        Let's Build <br>
-        Something Futuristic.
-      </h2>
-
-      <p class="contact-sub">
-        Looking for a UI/UX Designer or Front-End Designer who combines modern aesthetics with real implementation
-        experience? Let’s create exceptional digital experiences together.
-      </p>
-
-      <div class="hero-actions" style="justify-content:center">
-        <a href="mailto:ramarajuudimudi0@gmail.com" class="btn-primary">
-          Contact Me
-        </a>
+        <div class="contact-right">
+          <form id="contactForm">
+            <div class="form-field">
+              <label for="cf-name">Name</label>
+              <input type="text" id="cf-name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-field">
+              <label for="cf-email">Email</label>
+              <input type="email" id="cf-email" name="email" placeholder="you@company.com" required>
+            </div>
+            <div class="form-field">
+              <label for="cf-msg">Message</label>
+              <textarea id="cf-msg" name="message" placeholder="Tell me about your project…" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary magnetic" style="width:100%;justify-content:center;">Send
+              Message</button>
+          </form>
+        </div>
       </div>
-
-      <div class="contact-details">
-
-        <div class="contact-pill">
-          📧 ramarajuudimudi0@gmail.com
-        </div>
-
-        <div class="contact-pill">
-          📞 +91 9010725501
-        </div>
-
-        <div class="contact-pill">
-          📍 Andhra Pradesh, India
-        </div>
-
-      </div>
-
     </div>
-
   </section>
 
-  <!-- FOOTER -->
-
+  <!-- ============ FOOTER ============ -->
   <footer>
-    <div>© 2026 Ramaraju Udimudi</div>
-    <div>Premium Futuristic Portfolio Experience</div>
+    <div class="wrap">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">Ramaraju<span class="grad-text">.</span></div>
+          <p style="color:var(--text-dim);margin-top:12px;max-width:280px;font-size:.9rem;">Product Designer &amp;
+            Front-End Designer crafting premium, accessible digital experiences.</p>
+        </div>
+
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h5>Navigate</h5>
+            <a href="#about">About</a><a href="#skills">Skills</a><a href="#work">Work</a><a href="#contact">Contact</a>
+          </div>
+          <div class="footer-col">
+            <h5>Connect</h5>
+            <a href="mailto:ramarajuudimudi0@gmail.com">Email</a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/" target="_blank" rel="noopener">Github</a>
+          </div>
+          <div class="footer-col">
+            <h5>Resource</h5>
+            <a href="assets/resume.pdf" download>Resume</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Ramaraju Udimudi. All rights reserved.</p>
+        <a href="#top" class="back-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="1.8">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+          </svg></a>
+      </div>
+    </div>
   </footer>
 
-  <!-- SCRIPTS -->
-
-  <script>
-
-    // Cursor
-
-    const cursor = document.querySelector('.cursor');
-    const ring = document.querySelector('.cursor-ring');
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let ringX = 0;
-    let ringY = 0;
-
-    document.addEventListener('mousemove', e => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-
-      cursor.style.left = mouseX + 'px';
-      cursor.style.top = mouseY + 'px';
-    });
-
-    function animateRing() {
-      ringX += (mouseX - ringX) * 0.15;
-      ringY += (mouseY - ringY) * 0.15;
-
-      ring.style.left = ringX + 'px';
-      ring.style.top = ringY + 'px';
-
-      requestAnimationFrame(animateRing);
-    }
-
-    animateRing();
-
-    // Reveal
-
-    const reveals = document.querySelectorAll('.reveal');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      })
-    }, { threshold: 0.15 });
-
-    reveals.forEach(el => observer.observe(el));
-
-    /* =========================
-   EXPERIENCE EXPAND
-========================= */
-
-    const expandButtons = document.querySelectorAll('.expand-btn');
-
-    expandButtons.forEach(button => {
-
-      button.addEventListener('click', () => {
-
-        const card = button.closest('.timeline-card');
-
-        card.classList.toggle('active');
-
-      });
-
-    });
-
-    /* =========================
-       CREATIVES POPUP
-    ========================= */
-
-    const openBtn = document.getElementById('openCreatives');
-    const overlay = document.getElementById('creativesOverlay');
-    const closeBtn = document.getElementById('closeCreatives');
-    const backdrop = document.getElementById('creativesBackdrop');
-
-    function openModal() {
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      overlay.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    if (openBtn) openBtn.addEventListener('click', openModal);
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-    if (backdrop) backdrop.addEventListener('click', closeModal);
-
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeModal();
-    });
-
-
-
-  </script>
-
+  <script src="js/script.js"></script>
 </body>
 
 </html>
