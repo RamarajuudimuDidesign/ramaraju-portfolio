@@ -625,7 +625,7 @@ nav{
    ===================================================================== */
 
 .gallery-grid{
-  columns:4 260px;column-gap:16px;
+  columns:4 277px;column-gap:28px;
 }
 .gallery-item{
   break-inside:avoid;margin-bottom:16px;border-radius:14px;overflow:hidden;
