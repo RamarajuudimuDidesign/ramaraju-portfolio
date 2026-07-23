@@ -450,6 +450,7 @@ nav{
 }
 .marquee-item:hover{color:var(--text);}
 .marquee-item svg{width:22px;height:22px;opacity:.7;}
+.marquee-item i{font-size:1.15rem;opacity:.75;}
 @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
 /* =====================================================================
