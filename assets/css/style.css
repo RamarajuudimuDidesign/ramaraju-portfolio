@@ -625,13 +625,24 @@ nav{
    ===================================================================== */
 
 .gallery-grid{
-  columns:4 277px;column-gap:28px;
+  columns:4 200px;column-gap:28px;
+}
+.gallery-grid1{
+  columns:3 200px;column-gap:28px;
 }
 .gallery-item{
   break-inside:avoid;margin-bottom:16px;border-radius:14px;overflow:hidden;
   border:1px solid var(--border);position:relative;
+  /* Reserve space + a visible surface while the lazy-loaded image below is
+     still fetching. Without this, the card has no height until the image
+     arrives, so it renders as an invisible 2px sliver and the whole gallery
+     jumps once images finish loading. min-height only sets a *floor* — once
+     the image loads, the card grows to match the image's real proportions,
+     so the masonry look is unaffected. */
+  background:var(--bg-soft);
+  min-height:160px;
 }
-.gallery-item img{width:100%;display:block;transition:transform .6s var(--ease);}
+.gallery-item img{width:100%;display:block;min-height:inherit;transition:transform .6s var(--ease);}
 .gallery-item:hover img{transform:scale(1.05);}
 .gallery-item a{display:block;position:relative;}
 .gallery-badge{
