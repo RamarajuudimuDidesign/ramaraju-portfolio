@@ -364,7 +364,7 @@ nav{
 
 .hero-inner{
   max-width:var(--container);margin:0 auto;padding-inline:var(--space-5);width:100%;
-  display:grid;grid-template-columns:1.15fr .85fr;gap:var(--space-6);align-items:center;
+  display:grid;grid-template-columns:1fr 1.08fr;gap:var(--space-6);align-items:center;
 }
 
 .hero-badges{display:flex;gap:12px;margin-bottom:30px;flex-wrap:wrap;}
@@ -406,11 +406,28 @@ nav{
 .social-btn svg{width:17px;height:17px;}
 
 .hero-panel{
-  padding:8px;border-radius:var(--radius-lg);
-  display:flex;align-items:center;height:100%;
+  position:relative;padding:8px;border-radius:var(--radius-lg);
+  display:flex;align-items:center;justify-content:center;height:100%;
 }
-.hero-panel .hero-stats{width:100%;}
-.hero-stats{background:var(--border);border-radius:20px;overflow:hidden;padding: 15px;}
+/* soft glow blob behind the hero image so it feels bigger / more premium */
+.hero-panel::before{
+  content:'';position:absolute;inset:6%;z-index:-1;
+  background:var(--gradient);filter:blur(90px);opacity:.32;border-radius:50%;
+  animation:heroGlowPulse 6s ease-in-out infinite;
+}
+@keyframes heroGlowPulse{0%,100%{opacity:.28;transform:scale(1);}50%{opacity:.42;transform:scale(1.08);}}
+.hero-panel .hero-stats{width:100%;max-width:620px;}
+.hero-stats{
+  background:transparent;border:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;
+  border-radius:24px;overflow:visible;padding:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-stats img{
+  width:100%;height:auto;max-width:100%;
+  filter:drop-shadow(0 30px 55px rgba(139,92,246,.4));
+  animation:heroFloat 5.5s ease-in-out infinite;
+}
+@keyframes heroFloat{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-18px) rotate(1.2deg);}}
 .hero-stat{background:var(--card);padding:26px 22px;transition:background .3s;}
 .hero-stat:hover{background:var(--card-hi);}
 .hero-stat .num{
@@ -418,6 +435,10 @@ nav{
   background:var(--gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
 }
 .hero-stat .lbl{font-size:.78rem;color:var(--text-dim);margin-top:6px;}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-stats img,.hero-panel::before{animation:none;}
+}
 
 .scroll-cue{
   position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
@@ -576,11 +597,16 @@ nav{
   padding:var(--space-4);
   display:flex;flex-direction:column;justify-content:flex-start;gap:var(--space-2);
 }
-.project-body .project-tags{margin-top:auto;padding-top:var(--space-2);}
 .project-body .project-links{margin-top:0;}
 .project-cat{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);}
 .project-body h3{font-family:var(--font-display);font-size:1.4rem;font-weight:600;letter-spacing:-.01em;}
-.project-body p{color:var(--text-dim);font-size:.92rem;line-height:1.6;}
+/* Clamp every description to the same 3 lines so card height no longer
+   depends on how much copy a given project has. */
+.project-body p{
+  color:var(--text-dim);font-size:.92rem;line-height:1.6;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;
+  overflow:hidden;
+}
 .project-meta{display:flex;gap:var(--space-3);margin-top:2px;flex-wrap:wrap;}
 .project-meta div{font-size:.8rem;}
 .project-meta span{display:block;color:var(--text-faint);font-family:var(--font-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;}
@@ -591,13 +617,34 @@ nav{
 }
 .project-links{display:flex;gap:var(--space-3);margin-top:var(--space-1);flex-wrap:wrap;}
 
-/* Extra content some cards carry (challenge/solution grid, case-study
-   link) is compacted to one column and a smaller type scale so it fits a
-   card-width column without blowing the card out much taller than its
-   neighbours. */
-.project-case-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:4px;padding-top:var(--space-2);border-top:1px solid var(--border);}
+/* Extra content some cards carry (challenge/solution grid) is tucked
+   behind a "Case Study" toggle so every card is the SAME height by
+   default — clicking a toggle only expands that one card, on demand,
+   instead of every card in the grid inflating to fit the longest one. */
+.project-more-btn{
+  display:inline-flex;align-items:center;gap:6px;margin-top:2px;align-self:flex-start;
+  font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--cyan);background:none;border:none;padding:0;cursor:pointer;
+  transition:gap .3s var(--ease),opacity .3s var(--ease);
+}
+.project-more-btn:hover{gap:11px;opacity:.85;}
+.project-more-btn svg{width:11px;height:11px;transition:transform .4s var(--ease);}
+.project-row.case-open .project-more-btn svg{transform:rotate(180deg);}
+.project-row.case-open .project-more-btn .more-label::after{content:'Hide details';}
+.project-more-btn .more-label::after{content:'Case study';}
+.project-more-btn .more-label{font-size:0;}
+.project-more-btn .more-label::after{font-size:.7rem;}
+
+.project-extra{
+  display:grid;grid-template-rows:0fr;opacity:0;
+  transition:grid-template-rows .5s var(--ease),opacity .4s var(--ease),margin-top .4s var(--ease);
+}
+.project-extra > div{overflow:hidden;min-height:0;}
+.project-row.case-open .project-extra{grid-template-rows:1fr;opacity:1;margin-top:2px;}
+
+.project-case-grid{display:grid;grid-template-columns:1fr;gap:10px;padding-top:var(--space-2);border-top:1px solid var(--border);}
 .project-case-grid div h5{font-size:.72rem;font-family:var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--text-faint);margin-bottom:4px;}
-.project-case-grid div p{font-size:.84rem;color:var(--text-dim);}
+.project-case-grid div p{font-size:.84rem;color:var(--text-dim);display:block;-webkit-line-clamp:unset;overflow:visible;}
 
 .stat-badge-row{display:flex;gap:18px;margin:2px 0;flex-wrap:wrap;}
 .stat-badge{display:flex;flex-direction:column;}

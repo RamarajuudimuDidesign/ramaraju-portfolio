@@ -272,6 +272,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ---------------- Project card "Case Study" expand ----------------
+     Extra content (challenge/solution) is collapsed by default so every
+     card in the grid renders at the same height. Toggling one card only
+     expands that card — it never pushes its neighbours taller. */
+  document.querySelectorAll('.project-more-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const row = btn.closest('.project-row');
+      const open = row.classList.toggle('case-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
   /* ---------------- Tilt cards ---------------- */
   document.querySelectorAll('.tilt').forEach(card => {
     card.addEventListener('mousemove', e => {
