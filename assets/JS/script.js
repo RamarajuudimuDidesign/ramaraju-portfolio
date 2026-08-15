@@ -217,10 +217,58 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(() => {
         circle.style.strokeDashoffset = c - (pct / 100) * c;
       });
+
+      /* Count the % label up from 0 in lockstep with the ring fill,
+         instead of showing the final number immediately. */
+      const pctLabel = circle.closest('.skill-ring')?.querySelector('.pct');
+      if (pctLabel) {
+        const dur = 1400;
+        const start = performance.now();
+        (function step(now) {
+          const t = Math.min(1, (now - start) / dur);
+          const eased = 1 - Math.pow(1 - t, 3);
+          pctLabel.textContent = Math.round(pct * eased) + '%';
+          if (t < 1) requestAnimationFrame(step);
+        })(start);
+      }
+
       ringIO.unobserve(circle);
     });
   }, { threshold: 0.4 });
   rings.forEach(r => ringIO.observe(r));
+
+  /* ---------------- Shared filter animation ----------------
+     Items that should disappear fade + lift out first (.filter-out),
+     then drop out of the grid flow once that transition finishes, so
+     removing them never leaves a blank gap or a hard jump-cut. Items
+     coming back reverse the same sequence with a small stagger so the
+     grid re-forms as a soft cascade instead of popping in at once. */
+  function animateFilterSet(items, shouldShow) {
+    items.forEach((item, i) => {
+      const show = shouldShow(item);
+      if (show) {
+        item.classList.remove('hidden-item');
+        item.style.display = '';
+        item.classList.add('filter-out');
+        // force reflow so the browser registers the starting state
+        // before we remove it, otherwise the transition won't fire
+        void item.offsetWidth;
+        setTimeout(() => item.classList.remove('filter-out'), 20 + i * 15);
+      } else {
+        item.classList.add('filter-out');
+        const onEnd = e => {
+          if (e && e.propertyName !== 'opacity') return;
+          if (item.classList.contains('filter-out')) {
+            item.style.display = 'none';
+            item.classList.add('hidden-item');
+          }
+          item.removeEventListener('transitionend', onEnd);
+        };
+        item.addEventListener('transitionend', onEnd);
+        setTimeout(() => onEnd(), 450); // safety net if transitionend is missed
+      }
+    });
+  }
 
   /* ---------------- Skill filter ---------------- */
   const skillChips = document.querySelectorAll('[data-skill-filter]');
@@ -230,25 +278,21 @@ document.addEventListener('DOMContentLoaded', () => {
       skillChips.forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       const val = chip.dataset.skillFilter;
-      skillCards.forEach(card => {
-        const show = val === 'all' || card.dataset.cat === val;
-        card.style.display = show ? '' : 'none';
-      });
+      animateFilterSet(skillCards, card => val === 'all' || card.dataset.cat === val);
     });
   });
 
   /* ---------------- Project filter ---------------- */
   const projChips = document.querySelectorAll('[data-proj-filter]');
-  const projRows = document.querySelectorAll('.project-row');
+  const projRows = document.querySelectorAll('.project-row:not(.project-row-inactive)');
   projChips.forEach(chip => {
     chip.addEventListener('click', () => {
       projChips.forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       const val = chip.dataset.projFilter;
-      projRows.forEach(row => {
+      animateFilterSet(projRows, row => {
         const tags = (row.dataset.tags || '').split(',');
-        const show = val === 'all' || tags.includes(val);
-        row.classList.toggle('hidden-item', !show);
+        return val === 'all' || tags.includes(val);
       });
     });
   });

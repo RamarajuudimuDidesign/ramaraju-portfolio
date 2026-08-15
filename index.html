@@ -20,10 +20,10 @@
     (function () {
       try {
         var saved = localStorage.getItem('ru-theme');
-        var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        var theme = saved || 'light';
         document.documentElement.setAttribute('data-theme', theme);
       } catch (e) {
-        document.documentElement.setAttribute('data-theme', 'dark');
+        document.documentElement.setAttribute('data-theme', 'light');
       }
     })();
   </script>
@@ -36,8 +36,8 @@
     <defs>
       <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stop-color="#8b5cf6" />
-        <stop offset="52%" stop-color="#3b82f6" />
-        <stop offset="100%" stop-color="#06b6d4" />
+        <stop offset="52%" stop-color="#3E63DD" />
+        <stop offset="100%" stop-color="#14B8A6" />
       </linearGradient>
     </defs>
   </svg>
@@ -56,7 +56,7 @@
   <div class="cursor-dot"></div>
   <div class="cursor-ring"></div>
   <div id="scrollProgress"
-    style="position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(120deg,#8b5cf6,#3b82f6,#06b6d4);z-index:600;">
+    style="position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(120deg,#8b5cf6,#3E63DD,#14B8A6);z-index:600;">
   </div>
 
   <!-- ============ HEADER ============ -->
@@ -488,7 +488,7 @@
 
         <div class="project-row glass tilt rv" data-tags="web">
           <div class="project-media"
-            style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(139,92,246,.15),rgba(6,182,212,.1));">
+            style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(139,92,246,.15),rgba(20,184,166,.1));">
             <span class="project-idx">03</span>
             <img src="assets/img/intalk.png" alt="Intalk" loading="lazy">
           </div>
@@ -548,7 +548,7 @@
 
         <div class="project-row glass tilt rv" data-tags="mobile">
           <div class="project-media"
-            style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(139,92,246,.18),rgba(59,130,246,.12));">
+            style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(139,92,246,.18),rgba(62,99,221,.12));">
             <span class="project-idx">05</span>
             <img src="assets/img/Sales-Manager.png" alt="Sales Manager mobile app" loading="lazy">
           </div>
@@ -588,9 +588,9 @@
           </div>
         </div>
 
-        <div class="project-row glass tilt rv" data-tags="mobile" style="display: none;">
+        <div class="project-row glass tilt project-row-inactive" data-tags="mobile">
           <div class="project-media"
-            style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(6,182,212,.16),rgba(139,92,246,.1));">
+            style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(20,184,166,.16),rgba(139,92,246,.1));">
             <span class="project-idx">06</span>
             <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
               style="opacity:.85;">
@@ -700,7 +700,7 @@
 
         <div class="project-row glass tilt rv" data-tags="healthcare,mobile">
           <div class="project-media"
-            style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(6,182,212,.18),rgba(139,92,246,.12));">
+            style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(20,184,166,.18),rgba(139,92,246,.12));">
             <span class="project-idx">10</span>
           <img src="./assets/img/MedConnectAI.jpg" alt="medconnectai" loading="lazy">
           </div>
@@ -742,6 +742,53 @@
           </div>
         </div>
 
+        <div class="project-row glass tilt rv" data-tags="healthcare,mobile">
+          <div class="project-media"
+            style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(62,99,221,.18),rgba(20,184,166,.12));">
+            <span class="project-idx">11</span>
+           <img src="./assets/img/labs.png" alt="Labs" loading="lazy" width="100%" >
+          </div>
+          <div class="project-body">
+            <span class="project-cat">Home Diagnostics Mobile App</span>
+            <h3>FASTLABS</h3>
+            <p>A self-testing companion, not a doctor-booking app. FastLabs turns your phone into a pocket lab
+              guide — walk through step-by-step instructions for at-home tests like blood glucose and malaria
+              rapid kits, then read and log results the way a medical reference handbook would.</p>
+            <div class="stat-badge-row">
+              <div class="stat-badge"><b>Self-Test</b><span>Type</span></div>
+              <div class="stat-badge"><b>Result Reference</b><span>Focus</span></div>
+            </div>
+            <div class="project-tags">
+              <span class="tag">Home Diagnostics</span><span class="tag">Self-Test Flow</span><span
+                class="tag">Mobile UI</span><span class="tag">Figma</span>
+            </div>
+            <button class="project-more-btn" type="button" aria-expanded="false">
+              <span class="more-label"></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+            <div class="project-extra">
+              <div class="project-case-grid">
+                <div>
+                  <h5>Challenge</h5>
+                  <p>Most lab apps assume a doctor is in the loop. Here, the person needed to safely self-collect a
+                    sample and correctly read the result on their own, with zero clinical guidance in the room.</p>
+                </div>
+                <div>
+                  <h5>Solution</h5>
+                  <p>A guided, timer-driven flow for each test — collection steps, a visual strip/result reader, and
+                    plain-language interpretation cards — so the app reads like a trustworthy medical handbook
+                    rather than a booking form.</p>
+                </div>
+              </div>
+            </div>
+             <div class="project-links">
+              <a href="https://www.figma.com/proto/yCbs2KE81o57kWaZAhmCmn/Untitled?node-id=1-8751&t=sfmroTyeAPnwjmFz-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A8747" target="_blank" class="btn btn-ghost btn-sm">View ↗</a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -759,29 +806,29 @@
 
       <div class="gallery-grid rv" id="creativesGrid">
 
-        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/1.jpg" alt="Social media creative 2"
+        <div class="gallery-item rv" data-lightbox="creatives"><img src="assets/img/1.jpg" alt="Social media creative 2"
             loading="lazy"></div>
-        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/2.jpg" alt="Social media creative 3"
+        <div class="gallery-item rv" data-lightbox="creatives"><img src="assets/img/2.jpg" alt="Social media creative 3"
             loading="lazy"></div>
-        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/3.jpg" alt="Social media creative 4"
+        <div class="gallery-item rv" data-lightbox="creatives"><img src="assets/img/3.jpg" alt="Social media creative 4"
             loading="lazy"></div>
-        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/4.jpg" alt="Social media creative 5"
+        <div class="gallery-item rv" data-lightbox="creatives"><img src="assets/img/4.jpg" alt="Social media creative 5"
             loading="lazy"></div>
-        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/5.jpg" alt="Social media creative 5"
+        <div class="gallery-item rv" data-lightbox="creatives"><img src="assets/img/5.jpg" alt="Social media creative 5"
             loading="lazy"></div>
-        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/6.jpg" alt="Social media creative 6"
+        <div class="gallery-item rv" data-lightbox="creatives"><img src="assets/img/6.jpg" alt="Social media creative 6"
             loading="lazy"></div>
-        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/7.png" alt="Social media creative 6"
+        <div class="gallery-item rv" data-lightbox="creatives"><img src="assets/img/7.png" alt="Social media creative 6"
             loading="lazy"></div>
-        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/8.png" alt="Social media creative 7"
+        <div class="gallery-item rv" data-lightbox="creatives"><img src="assets/img/8.png" alt="Social media creative 7"
             loading="lazy"></div>
-        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/9.jpg" alt="Social media creative 9"
+        <div class="gallery-item rv" data-lightbox="creatives"><img src="assets/img/9.jpg" alt="Social media creative 9"
             loading="lazy"></div>
-        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/10.jpg" alt="Social media creative 10"
+        <div class="gallery-item rv" data-lightbox="creatives"><img src="assets/img/10.jpg" alt="Social media creative 10"
             loading="lazy"></div>
-        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/11.jpg" alt="Social media creative 11"
+        <div class="gallery-item rv" data-lightbox="creatives"><img src="assets/img/11.jpg" alt="Social media creative 11"
             loading="lazy"></div>
-        <div class="gallery-item" data-lightbox="creatives"><img src="assets/img/12.jpg" alt="Social media creative 12"
+        <div class="gallery-item rv" data-lightbox="creatives"><img src="assets/img/12.jpg" alt="Social media creative 12"
             loading="lazy"></div>
 
         <div class="gallery-item gallery-extra" data-lightbox="creatives"><img src="assets/img/13.jpg"
@@ -848,29 +895,61 @@
       </div>
 
       <div class="gallery-grid1 rv">
-        <div class="gallery-item"><a href="assets/img/allinone.pdf" target="_blank"><img src="assets/img/20.jpg"
-              alt="All-in-one brochure"><span class="gallery-badge">View PDF</span></a></div>
+        <div class="gallery-item brochure-item rv"><a href="assets/img/allinone.pdf" target="_blank"><img
+              src="assets/img/20.jpg" alt="All-in-one brochure">
+            <div class="brochure-overlay">
+              <span class="brochure-name">All-in-One Suite</span>
+              <span class="gallery-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> View PDF</span>
+            </div>
+          </a></div>
 
-        <div class="gallery-item"><a href="assets/img/cms-all.pdf" target="_blank"><img src="assets/img/231.jpg"
-              alt="CMS brochure"><span class="gallery-badge">View PDF</span></a></div>
+        <div class="gallery-item brochure-item rv"><a href="assets/img/cms-all.pdf" target="_blank"><img
+              src="assets/img/231.jpg" alt="CMS brochure">
+            <div class="brochure-overlay">
+              <span class="brochure-name">CMS Company Profile</span>
+              <span class="gallery-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> View PDF</span>
+            </div>
+          </a></div>
 
-        <div class="gallery-item"><a href="assets/img/Edukares.pdf" target="_blank"><img src="assets/img/251.jpg"
-              alt="Edukares brochure"><span class="gallery-badge">View PDF</span></a></div>
+        <div class="gallery-item brochure-item rv"><a href="assets/img/Edukares.pdf" target="_blank"><img
+              src="assets/img/251.jpg" alt="Edukares brochure">
+            <div class="brochure-overlay">
+              <span class="brochure-name">Edukares</span>
+              <span class="gallery-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> View PDF</span>
+            </div>
+          </a></div>
 
-        <div class="gallery-item"><a href="assets/img/suvarna-all.pdf" target="_blank"><img src="assets/img/261.jpg"
-              alt="Suvarna brochure"><span class="gallery-badge">View PDF</span></a></div>
+        <div class="gallery-item brochure-item rv"><a href="assets/img/suvarna-all.pdf" target="_blank"><img
+              src="assets/img/261.jpg" alt="Suvarna brochure">
+            <div class="brochure-overlay">
+              <span class="brochure-name">Suvarna HMS</span>
+              <span class="gallery-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> View PDF</span>
+            </div>
+          </a></div>
 
-        <div class="gallery-item"><a href="assets/img/roboclick.pdf" target="_blank"><img src="assets/img/R21.jpg"
-              alt="Roboclick brochure"><span class="gallery-badge">View PDF</span></a></div>
+        <div class="gallery-item brochure-item rv"><a href="assets/img/roboclick.pdf" target="_blank"><img
+              src="assets/img/R21.jpg" alt="Roboclick brochure">
+            <div class="brochure-overlay">
+              <span class="brochure-name">Roboclick</span>
+              <span class="gallery-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> View PDF</span>
+            </div>
+          </a></div>
 
-      <div class="gallery-item"><a href="assets/img/hims-cms-emr-all.pdf" target="_blank"><img src="assets/img/241.jpg"
-              alt="Roboclick brochure"><span class="gallery-badge">View PDF</span></a></div>
+        <div class="gallery-item brochure-item rv"><a href="assets/img/hims-cms-emr-all.pdf" target="_blank"><img
+              src="assets/img/241.jpg" alt="HIMS CMS EMR brochure">
+            <div class="brochure-overlay">
+              <span class="brochure-name">HIMS · CMS · EMR</span>
+              <span class="gallery-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> View PDF</span>
+            </div>
+          </a></div>
 
-               <div class="gallery-item"><a href="assets/img/271new.jpg" target="_blank"><img src="assets/img/271new.jpg"
-              alt="Roboclick brochure"><span class="gallery-badge">View PDF</span></a></div>
-
-
-
+        <div class="gallery-item brochure-item rv"><a href="./assets/img/Innovations.pdf" target="_blank"><img
+              src="assets/img/271new.jpg" alt="Innovations brochure">
+            <div class="brochure-overlay">
+              <span class="brochure-name">Innovations</span>
+              <span class="gallery-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> View PDF</span>
+            </div>
+          </a></div>
       </div>
     </div>
   </section>
@@ -1108,7 +1187,7 @@
       </div>
 
       <div class="placeholder-strip rv">
-        <div class="glass placeholder-card">
+        <div class="glass placeholder-card rv">
           <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
               <circle cx="12" cy="8" r="6" />
               <path d="M8.2 13.5 7 22l5-3 5 3-1.2-8.5" />
@@ -1116,7 +1195,7 @@
           <h5>Award</h5>
           <p>Add a recognition or award here.</p>
         </div>
-        <div class="glass placeholder-card">
+        <div class="glass placeholder-card rv">
           <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
               <path d="M14 2v6h6M9 15l2 2 4-4" />
@@ -1124,14 +1203,14 @@
           <h5>Certificate</h5>
           <p>Add a certification and issuer here.</p>
         </div>
-        <div class="glass placeholder-card">
+        <div class="glass placeholder-card rv">
           <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z" />
             </svg></div>
           <h5>Client Testimonial</h5>
           <p>Add a quote from a client or teammate.</p>
         </div>
-        <div class="glass placeholder-card">
+        <div class="glass placeholder-card rv">
           <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
               <path
                 d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" />
@@ -1286,7 +1365,6 @@
     </div>
   </footer>
 
-  <script src="js/script.js"></script>
 </body>
 
 </html>
