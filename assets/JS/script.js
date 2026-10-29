@@ -7,6 +7,95 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+
+  /* ---------------- Intro: hairline → slit → circle → pill ----------------
+     One 2.1s Web Animations timeline, then the overlay slides away and the
+     header drops in. Phone opens the pill vertically. Clicking the logo
+     replays it from a saved copy of the markup. */
+  const introEl = document.getElementById('intro');
+  const introTemplate = introEl ? introEl.cloneNode(true) : null;
+
+  function runIntro(root) {
+    const html = document.documentElement;
+    window.__introActive = true;
+    document.body.style.overflow = 'hidden';
+    const row = root.querySelector('.in-row');
+    const pill = root.querySelector('.in-pill');
+    const line = root.querySelector('.in-line');
+    const img = root.querySelector('.in-img');
+    const hdr = document.querySelector('header');
+    const fs = parseFloat(getComputedStyle(row).fontSize);
+    const phone = window.matchMedia('(max-width:720px)').matches;
+    const D = 2100;
+    let finished = false;
+
+    function done() {
+      window.__introActive = false;
+      document.body.style.overflow = '';
+      root.remove();
+      html.classList.remove('has-intro');
+    }
+    function exit() {
+      if (finished) return; finished = true;
+      const out = root.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-100%)' }],
+        { duration: 900, easing: 'cubic-bezier(.7,0,.2,1)', fill: 'forwards' });
+      if (hdr) hdr.animate([{ transform: 'translateY(-140%)', opacity: 0 }, { transform: 'none', opacity: 1 }],
+        { duration: 800, delay: 450, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'backwards' });
+      out.onfinish = done;
+    }
+    function play() {
+      let a;
+      if (!phone) {
+        const H = 1.1 * fs, W = 2.6 * fs;
+        root.style.setProperty('--fw', W + 'px');
+        a = pill.animate([
+          { width: .012 * fs + 'px', clipPath: 'inset(50% 0)', offset: 0, easing: 'cubic-bezier(.5,0,.3,1)' },
+          { width: .012 * fs + 'px', clipPath: 'inset(0% 0)', offset: .14, easing: 'cubic-bezier(.45,0,.3,1)' },
+          { width: .16 * fs + 'px', clipPath: 'inset(0% 0)', offset: .30, easing: 'cubic-bezier(.4,0,.2,1)' },
+          { width: H + 'px', clipPath: 'inset(0% 0)', offset: .58, easing: 'cubic-bezier(.4,0,.2,1)' },
+          { width: W + 'px', clipPath: 'inset(0% 0)', offset: 1 }
+        ], { duration: D, fill: 'forwards' });
+        row.animate([{ gap: '.026em', offset: 0 }, { gap: '.026em', offset: .14 }, { gap: '.05em', offset: .58 }, { gap: '.085em', offset: 1 }],
+          { duration: D, fill: 'forwards', easing: 'cubic-bezier(.4,0,.2,1)' });
+      } else {
+        const W = window.innerWidth - 40, H = W / 1.85;
+        a = pill.animate([
+          { height: '1.5px', clipPath: 'inset(0 50%)', offset: 0, easing: 'cubic-bezier(.5,0,.3,1)' },
+          { height: '1.5px', clipPath: 'inset(0 0%)', offset: .14, easing: 'cubic-bezier(.45,0,.3,1)' },
+          { height: H * .10 + 'px', clipPath: 'inset(0 0%)', offset: .30, easing: 'cubic-bezier(.4,0,.2,1)' },
+          { height: H * .55 + 'px', clipPath: 'inset(0 0%)', offset: .58, easing: 'cubic-bezier(.4,0,.2,1)' },
+          { height: H + 'px', clipPath: 'inset(0 0%)', offset: 1 }
+        ], { duration: D, fill: 'forwards' });
+        Object.assign(img.style, { height: H + 'px', top: '50%', bottom: 'auto', transform: 'translate(-50%,-50%)' });
+        row.animate([{ gap: '.03em', offset: 0 }, { gap: '.03em', offset: .14 }, { gap: '.1em', offset: 1 }],
+          { duration: D, fill: 'forwards', easing: 'cubic-bezier(.4,0,.2,1)' });
+      }
+      /* grey hairline overlay fades out as the canvas appears (never the canvas itself) */
+      line.animate([{ opacity: 1, offset: 0 }, { opacity: 1, offset: .14 }, { opacity: 0, offset: .30 }, { opacity: 0, offset: 1 }],
+        { duration: D, fill: 'forwards' });
+      a.onfinish = () => setTimeout(exit, 1100);
+    }
+    root.querySelector('.in-skip').addEventListener('click', exit);
+    (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(play);
+    setTimeout(exit, 7000); /* safety net: never trap the visitor */
+  }
+
+  if (introEl && document.documentElement.classList.contains('has-intro')) runIntro(introEl);
+  else if (introEl) introEl.remove();
+
+  /* Logo click → scroll to top and replay the intro */
+  document.querySelectorAll('.logo').forEach(logo => {
+    logo.addEventListener('click', e => {
+      if (!introTemplate || window.__introActive || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      e.preventDefault();
+      window.scrollTo(0, 0);
+      const fresh = introTemplate.cloneNode(true);
+      document.documentElement.classList.add('has-intro');
+      document.body.appendChild(fresh);
+      runIntro(fresh);
+    });
+  });
+
   /* ---------------- Theme toggle ---------------- */
   const themeSwitch = document.getElementById('themeSwitch');
   if (themeSwitch) {
@@ -90,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
     finished = true;
     setProgress(100);
     if (pre) pre.classList.add('done');
-    document.body.style.overflow = '';
+    if (!window.__introActive) document.body.style.overflow = '';
   }
 
   document.body.style.overflow = 'hidden';
@@ -453,6 +542,31 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'ArrowLeft') step(-1);
       if (e.key === 'ArrowRight') step(1);
     });
+  }
+
+
+  /* ---------------- Hero name: letter-by-letter entrance ---------------- */
+  const h1 = document.querySelector('.hero h1');
+  if (h1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const textNode = Array.from(h1.childNodes).find(n => n.nodeType === 3 && n.textContent.trim());
+    if (textNode) {
+      const frag = document.createDocumentFragment();
+      let i = 0;
+      textNode.textContent.trim().split(/\s+/).forEach((word, wi, all) => {
+        const w = document.createElement('span');
+        w.style.cssText = 'display:inline-block;white-space:nowrap;';
+        word.split('').forEach(ch => {
+          const s = document.createElement('span');
+          s.className = 'ch';
+          s.textContent = ch;
+          s.style.animationDelay = (2.4 + i++ * 0.045) + 's';
+          w.appendChild(s);
+        });
+        frag.appendChild(w);
+        if (wi < all.length - 1) frag.appendChild(document.createTextNode(' '));
+      });
+      h1.replaceChild(frag, textNode);
+    }
   }
 
   /* ---------------- Smooth anchor scroll ---------------- */

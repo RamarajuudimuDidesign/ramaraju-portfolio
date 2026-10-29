@@ -43,6 +43,9 @@
        flashes the wrong theme and never appears to "reset". */
     (function () {
       try {
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('has-intro');
+      } catch (e) {}
+      try {
         var saved = localStorage.getItem('ru-theme');
         var theme = saved || 'light';
         document.documentElement.setAttribute('data-theme', theme);
@@ -121,6 +124,17 @@
     </defs>
   </svg>
 
+  <!-- ============ INTRO: hairline → slit → circle → pill reveal ============ -->
+  <div id="intro" aria-hidden="true">
+    <div class="in-row">
+      <span class="in-w">RAMA</span>
+      <span class="in-pill"><span class="in-img"><img src="./assets/img/rocket.png" alt="" width="600" height="600"></span><span class="in-line"></span></span>
+      <span class="in-w">RAJU</span>
+    </div>
+    <div class="in-tag">UI/UX Designer &nbsp;/&nbsp; Front-End Designer</div>
+    <button class="in-skip" type="button">Skip</button>
+  </div>
+
   <div id="preloader">
     <div class="pre-mark"><span>R</span><span>A</span><span>M</span><span>.</span></div>
     <div class="pre-bar">
@@ -189,7 +203,7 @@
       <div>
         <div class="hero-badges rv on">
           <span class="pill"><span class="dot"></span> Available for Full-Time</span>
-          <span class="pill">3+ Years Experience</span>
+          <span class="pill">4+ Years Experience</span>
         </div>
 
         <h1 class="rv on">
@@ -1016,6 +1030,54 @@
             alt="Social media creative design 19" loading="lazy"></div>
         <div class="gallery-item gallery-extra" data-lightbox="creatives"><img src="assets/img/21.jpg"
             alt="Social media creative design 20" loading="lazy"></div>
+
+        <div class="gallery-item gallery-extra gc" role="img" aria-label="Brand Identity design card">
+          <div class="cc-art cc-brand" aria-hidden="true">
+            <span class="b-ring b-r1"></span><span class="b-ring b-r2"></span>
+            <div class="b-mark"><span>R</span></div>
+            <span class="b-dot b-d1"></span><span class="b-dot b-d2"></span><span class="b-dot b-d3"></span><span class="b-dot b-d4"></span>
+            <div class="b-card"><i></i><b></b><b></b></div>
+          </div>
+          <span class="gc-label">Brand Identity</span>
+        </div>
+        <div class="gallery-item gallery-extra gc" role="img" aria-label="Poster Design design card">
+          <div class="cc-art cc-poster" aria-hidden="true">
+            <div class="p-sheet">
+              <span class="p-sun"></span>
+              <span class="p-bar p-b1"></span><span class="p-bar p-b2"></span><span class="p-bar p-b3"></span>
+              <strong>BOLD<br>IDEAS</strong>
+            </div>
+          </div>
+          <span class="gc-label">Poster Design</span>
+        </div>
+        <div class="gallery-item gallery-extra gc" role="img" aria-label="Social Campaign design card">
+          <div class="cc-art cc-social" aria-hidden="true">
+            <div class="s-post s-p1"><i></i><b></b></div>
+            <div class="s-post s-p2"><i></i><b></b></div>
+            <div class="s-post s-p3"><i></i><b></b><span class="s-heart">&#9829;</span></div>
+          </div>
+          <span class="gc-label">Social Campaign</span>
+        </div>
+        <div class="gallery-item gallery-extra gc" role="img" aria-label="Icon Set design card">
+          <div class="cc-art cc-icons" aria-hidden="true">
+            <div class="i-grid">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10Z"/></svg></span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="m8 12 3 3 5-6"/></svg></span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 18V9l8-5 8 5v9H4Z"/><path d="M10 18v-5h4v5"/></svg></span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 5h14v10H9l-4 4V5Z"/></svg></span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.5 6.6 19.5l1.2-6L3.3 9.3l6.1-.7L12 3Z"/></svg></span>
+            </div>
+          </div>
+          <span class="gc-label">Icon Set</span>
+        </div>
+        <div class="gallery-item gallery-extra gc" role="img" aria-label="Type & Colour design card">
+          <div class="cc-art cc-type" aria-hidden="true">
+            <div class="t-aa">Aa</div>
+            <div class="t-pal"><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <span class="gc-label">Type & Colour</span>
+        </div>
 
       </div>
 
